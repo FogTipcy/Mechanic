@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>𝙃𝙖𝙫𝙚 𝘼 𝙉𝙞𝙘𝙚 𝘿𝙖𝙮.</title>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background-color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: yellow;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #EEFF00;
+      margin: 20px 0;
+    }
+
+    input[type="file"] {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    video {
+      width: 965px;
+      height: 550px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    p {
+      color: #eeff00;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 密码输入界面 -->
+  <div id="passwordScreen" style="display: block;">
+    <input type="password" id="passwordInput">
+    <button onclick="checkPassword()">提交</button>
+  </div>
+
+  <h2><b>Picture in Picture Tool Night Version</b></h2>
+  <hr>
+  <input type="file" id="file" onchange="onInputFileChange()" style="display: none;">
+  <br/>
+  <video id="video_id" width="965" height="550" controls autoplay loop>画中画</video>
+  <script>
+    // 预设密码
+    const correctPassword = "password";
+
+    function checkPassword() {
+      const inputPassword = document.getElementById('passwordInput').value;
+      if (inputPassword === correctPassword) {
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('file').style.display = 'block';
+      } else {
+        alert('密码错误，请重新输入。');
+      }
+    }
+
+    function onInputFileChange() {
+      var file = document.getElementById('file').files[0];
+      var url = URL.createObjectURL(file);
+      console.log(url);
+      document.getElementById("video_id").src = url;
+    }
+  </script>
+  <p>Technology from Doubao and CSDN.</p>
+</body>
+
+</html>
